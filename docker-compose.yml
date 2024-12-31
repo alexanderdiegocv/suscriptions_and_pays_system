@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - suscriptions_system_redis:/data
+    command: redis-server --appendonly yes
+    networks:
+      - suscriptions_system_network
+
+volumes:
+  suscriptions_system_redis:
+
+networks:
+  suscriptions_system_network:
+    driver: bridge
